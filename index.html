@@ -16,6 +16,13 @@
         <input type="text" id="hexInput" placeholder="#RRGGBB">
         <button onclick="convertHexToRGB()">Converter para RGB</button>
     </div>
+
+    <div>
+        <input type="number" id="rInput" placeholder="R" min="0" max="255">
+        <input type="number" id="gInput" placeholder="G" min="0" max="255">
+        <input type="number" id="bInput" placeholder="B" min="0" max="255">
+        <button onclick="convertRGBToHex()">Converter para Hex</button>
+    </div>
     
     <script>
         function convertHexToRGB() {
@@ -30,6 +37,20 @@
             let b = parseInt(hex.substring(4, 6), 16);
             
             alert(`RGB(${r}, ${g}, ${b})`);
+        }
+        
+        function convertRGBToHex() {
+            let r = parseInt(document.getElementById("rInput").value);
+            let g = parseInt(document.getElementById("gInput").value);
+            let b = parseInt(document.getElementById("bInput").value);
+            
+            if (isNaN(r) || isNaN(g) || isNaN(b) || r < 0 || r > 255 || g < 0 || g > 255 || b < 0 || b > 255) {
+                alert("Valores inválidos! Use números entre 0 e 255");
+                return;
+            }
+            let hex = `#${r.toString(16).padStart(2, '0')}${g.toString(16).padStart(2, '0')}${b.toString(16).padStart(2, '0')}`;
+            
+            alert(`Hexadecimal: ${hex}`);
         }
     </script>
 </body>
