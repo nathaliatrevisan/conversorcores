@@ -11,6 +11,8 @@
 </head>
 <body>
     <h2>Conversor de Cores</h2>
+
+    <div class="color-display" id="colorDisplay" style="width: 100px; height: 100px; margin: 20px auto; border: 1px solid #000;"></div>
     
     <div>
         <input type="text" id="hexInput" placeholder="#RRGGBB">
@@ -36,9 +38,12 @@
             let g = parseInt(hex.substring(2, 4), 16);
             let b = parseInt(hex.substring(4, 6), 16);
             
-            alert(`RGB(${r}, ${g}, ${b})`);
+            document.getElementById("rInput").value = r;
+            document.getElementById("gInput").value = g;
+            document.getElementById("bInput").value = b;
+            document.getElementById("colorDisplay").style.backgroundColor = `#${hex}`;
         }
-        
+    
         function convertRGBToHex() {
             let r = parseInt(document.getElementById("rInput").value);
             let g = parseInt(document.getElementById("gInput").value);
@@ -50,7 +55,8 @@
             }
             let hex = `#${r.toString(16).padStart(2, '0')}${g.toString(16).padStart(2, '0')}${b.toString(16).padStart(2, '0')}`;
             
-            alert(`Hexadecimal: ${hex}`);
+            document.getElementById("hexInput").value = hex;
+            document.getElementById("colorDisplay").style.backgroundColor = hex;
         }
     </script>
 </body>
