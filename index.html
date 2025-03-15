@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de Cores</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+        input { margin: 5px; padding: 5px; text-align: center; }
+    </style>
+</head>
+<body>
+    <h2>Conversor de Cores</h2>
+    
+    <div>
+        <input type="text" id="hexInput" placeholder="#RRGGBB">
+        <button onclick="convertHexToRGB()">Converter para RGB</button>
+    </div>
+    
+    <script>
+        function convertHexToRGB() {
+            let hex = document.getElementById("hexInput").value;
+            if (hex.startsWith('#')) hex = hex.slice(1);
+            if (hex.length !== 6) {
+                alert("Formato inválido! Use #RRGGBB");
+                return;
+            }
+            let r = parseInt(hex.substring(0, 2), 16);
+            let g = parseInt(hex.substring(2, 4), 16);
+            let b = parseInt(hex.substring(4, 6), 16);
+            
+            alert(`RGB(${r}, ${g}, ${b})`);
+        }
+    </script>
+</body>
+</html>
